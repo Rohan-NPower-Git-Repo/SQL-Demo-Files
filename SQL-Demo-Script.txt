@@ -1,0 +1,61 @@
+admin@ubuntu-vm:~$ sqlite3 EmpDB.db
+
+SQLite version 3.45.1 2024-01-30 16:01:20
+Enter ".help" for usage hints.
+
+-- To get DB Name 
+sqlite> .databases
+main: /home/admin/EmpDB.db r/w
+
+-- CREATE - How to create a new table or record in a table. 
+sqlite> CREATE TABLE Employee( empId INT PRIMARY KEY, empName TEXT, empDept TEXT, empSalary REAL, empCity TEXT, empCountry TEXT );
+
+-- To See Table Structure
+sqlite> .schema
+CREATE TABLE Employee( empId INT PRIMARY KEY, empName TEXT, empDept TEXT, empSalary REAL, empCity TEXT, empCountry TEXT );
+
+sqlite> INSERT INTO Employee VALUES ( 1, 'Harvey Specter', 'Legal', 100000, 'New York', 'USA' ); 
+
+sqlite> INSERT INTO Employee VALUES ( 2, 'Jessica Pearson', 'CEO', 200000, 'Seattle', 'USA' ); 
+
+sqlite> INSERT INTO Employee VALUES ( 3, 'Mike Ross', 'Research', 50000, 'Toronto', 'Canada' ); 
+
+sqlite> INSERT INTO Employee VALUES ( 4, 'Louis Litt', 'COO', 150000, 'London', 'UK' ); 
+
+-- READ - How to retrieve data from a table.
+
+-- To see Column Names
+sqlite> .headers on
+
+sqlite> SELECT * FROM Employee;
+empId|empName|empDept|empSalary|empCity|empCountry
+1|Harvey Specter|Legal|100000.0|New York|USA
+2|Jessica Pearson|CEO|200000.0|Seattle|USA
+3|Mike Ross|Research|50000.0|Toronto|Canada
+4|Louis Litt|COO|150000.0|London|UK
+
+
+-- Update - How to modify existing records.
+-- Employee Salary because they got promoted
+sqlite> UPDATE Employee SET empSalary = 75000 WHERE empId = 3; 
+
+sqlite> SELECT * FROM Employee;
+empId|empName|empDept|empSalary|empCity|empCountry
+1|Harvey Specter|Legal|100000.0|New York|USA
+2|Jessica Pearson|CEO|200000.0|Seattle|USA
+3|Mike Ross|Research|75000.0|Toronto|Canada
+4|Louis Litt|COO|150000.0|London|UK
+
+-- Delete - How to remove records from a table. 
+-- Employee because they resigned
+sqlite> DELETE FROM Employee WHERE empId = 3;
+
+sqlite> SELECT * FROM Employee;
+empId|empName|empDept|empSalary|empCity|empCountry
+1|Harvey Specter|Legal|100000.0|New York|USA
+2|Jessica Pearson|CEO|200000.0|Seattle|USA
+4|Louis Litt|COO|150000.0|London|UK
+sqlite> 
+
+-- Get out of SQLite Console
+sqlite> .exit
