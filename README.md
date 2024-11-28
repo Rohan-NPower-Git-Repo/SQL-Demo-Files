@@ -1,2 +1,2 @@
 # SQL-Demo-Files
- Adding SQL Files
+A Repo containing some basic SQLite DB scripts
